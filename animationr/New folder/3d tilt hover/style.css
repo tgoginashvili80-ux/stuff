@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #1a1a40, #000);
+  overflow: hidden;
+}
+
+.scene {
+  perspective: 1200px;
+}
+
+.magic-card {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  box-shadow:
+    0 0 40px rgba(0, 150, 255, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  color: white;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Neon glow */
+.magic-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(120deg, transparent, #00f0ff, transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* Light sweep */
+.magic-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: 0.6s;
+}
+
+.magic-card:hover {
+  transform: rotateX(12deg) rotateY(-12deg) scale(1.05);
+  box-shadow: 0 0 60px rgba(0, 200, 255, 0.6);
+}
+
+.magic-card:hover::before {
+  opacity: 1;
+}
+
+.magic-card:hover::after {
+  left: 130%;
+}
+
+.magic-card h2 {
+  transform: translateZ(30px);
+  margin-bottom: 10px;
+}
+
+.magic-card p {
+  transform: translateZ(20px);
+  opacity: 0.9;
+}

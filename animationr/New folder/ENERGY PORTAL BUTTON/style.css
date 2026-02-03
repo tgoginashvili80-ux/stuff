@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #0f2027, #000);
+}
+
+/* BUTTON */
+.energy-btn {
+  position: relative;
+  width: 220px;
+  height: 70px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  transition: 0.5s;
+}
+
+/* TEXT */
+.energy-btn span {
+  position: relative;
+  z-index: 5;
+  color: #00f6ff;
+  font-size: 20px;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(0,255,255,0.8);
+}
+
+/* BASE */
+.energy-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: rgba(0, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+/* ENERGY RINGS */
+.energy-btn i {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: rotate 6s linear infinite;
+}
+
+.energy-btn i:nth-child(2) {
+  border-top: 2px solid #00f6ff;
+}
+
+.energy-btn i:nth-child(3) {
+  border-left: 2px solid #00bfff;
+  animation-duration: 4s;
+}
+
+.energy-btn i:nth-child(4) {
+  border-right: 2px solid #7df9ff;
+  animation-duration: 8s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* HOVER = OVERDRIVE */
+.energy-btn:hover {
+  box-shadow:
+    0 0 40px #00f6ff,
+    0 0 80px rgba(0, 255, 255, 0.8);
+}
+
+.energy-btn:hover span {
+  color: #fff;
+  text-shadow: 0 0 25px #00f6ff;
+}
